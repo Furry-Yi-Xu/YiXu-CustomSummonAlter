@@ -1,0 +1,19 @@
+Basic_Alter:
+  main_alter:
+    key: "default:palm_planks"
+    item: "default:topaz"
+    amount: 1
+    action:
+      type: right_click
+      sender: "console"
+      command:
+        - "say 成功召唤MM怪物！"
+        - "say 这是第二条命令"
+
+  sub_altar:
+    key: "default:stripped_palm_wood"
+    item: "default:topaz_ore"
+    amount: 1
+    offset:
+      - 0.5,-1,5
+      - 2,0,5

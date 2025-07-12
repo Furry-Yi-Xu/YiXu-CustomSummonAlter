@@ -1,0 +1,17 @@
+name: YiXu-CustomSummonAlter
+version: '1.0'
+main: com.yixu.CustomSummonAlter
+api-version: '1.21'
+
+commands:
+  yixu-customsummonalter:
+    description: 插件主命令
+    usage: /yixu-customsummonalter <reload>
+
+permissions:
+  yixu-customsummonalter.reload:
+    description: 重载领地核心系统配置文件
+    default: op
+  yixu-customsummonalter.main_alter.setting:
+    description: 设置主祭坛位置
+    default: op

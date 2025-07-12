@@ -1,0 +1,23 @@
+prefix: "&7[&b自定义召唤祭坛&7] "
+
+commands:
+  no-permission: "&c你没有权限执行此命令！"
+  command-usage: "&c用法: /YiXu-CustomSummonAlter"
+  unknown-message: "&c未找到消息 %message%"
+  reload:
+    reload-succeed: "&a配置已重新加载！"
+
+main_alter:
+  pointer_select_started: "&6成功开启主祭坛位置选择！"
+  pointer_select_succeed: "&a主祭坛位置选择成功！"
+
+  pointer_confirm_error: "&c请先开启主祭坛选择！"
+  pointer_confirm_succeed: "&a主祭坛位置确认成功！"
+
+sub_alter:
+  pointer_select_started: "&6成功开启子祭坛位置选择！"
+  pointer_select_succeed: "&a子祭坛位置选择成功！"
+  pointer_select_exist: "&c子祭坛位置已存在，请不要重复添加！"
+
+  pointer_confirm_error: "&c请先开启子祭坛选择！"
+  pointer_confirm_succeed: "&a子祭坛位置确认成功！"
