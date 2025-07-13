@@ -12,4 +12,6 @@ public class PermissionNodes {
     public static final String SUB_ALTER_SETTING = MainPREFIX + "sub_alter.setting";
     public static final String SUB_ALTER_CONFIRM = MainPREFIX + "sub_alter.confirm";
 
+    public static final String ALL_ALTER_CONFIRM = MainPREFIX + "sub_alter.confirm";
+
 }

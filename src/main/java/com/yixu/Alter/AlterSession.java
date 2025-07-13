@@ -2,68 +2,60 @@ package com.yixu.Alter;
 
 import org.bukkit.Location;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class AlterSession {
 
-    private HashMap<UUID, String> playerAlterStatus = new HashMap<>();
-    ;
+    private final Map<UUID, String> playerAlterStatus = new HashMap<>();
+    private final Map<UUID, Location> mainAlterLocation = new HashMap<>();
+    private final Map<UUID, List<Location>> subAlterLocations = new HashMap<>();
 
-    private HashMap<UUID, Location> main_alter_Location = new HashMap<>();
-    ;
-    private HashMap<UUID, List<Location>> sub_alter_Location = new HashMap<>();
-    ;
+    public Location getMainAlterLocation(UUID uuid) {
+        return mainAlterLocation.get(uuid);
+    }
+
+    public void addMainAlterLocation(UUID uuid, Location location) {
+        mainAlterLocation.put(uuid, location);
+    }
+
+    public List<Location> getSubAlterLocations(UUID uuid) {
+        return subAlterLocations.get(uuid);
+    }
+
+    public boolean addSubAlterLocation(UUID uuid, Location location) {
+
+        if (!subAlterLocations.containsKey(uuid)) {
+            ArrayList<Location> SubAlterLocation = new ArrayList<>();
+            SubAlterLocation.add(location);
+            subAlterLocations.put(uuid, new ArrayList<>(SubAlterLocation));
+            return false;
+        }
+
+        List<Location> SubAlterLocation = subAlterLocations.get(uuid);
+
+        if (!SubAlterLocation.contains(location)) {
+            SubAlterLocation.add(location);
+            subAlterLocations.put(uuid, SubAlterLocation);
+            return false;
+        }
+
+        return true;
+    }
 
     public String getPlayerAlterStatus(UUID uuid) {
         return playerAlterStatus.get(uuid);
     }
 
-    public void setPlayerAlterStatus(UUID uuid, String playerStatus) {
-        playerAlterStatus.put(uuid, playerStatus);
+    public void setPlayerAlterStatus(UUID uuid, String status) {
+        playerAlterStatus.put(uuid, status);
     }
 
-    public Location getMain_alter_Location(UUID uuid) {
-        return main_alter_Location.get(uuid);
+    public void clearMainAlterLocations(UUID uuid) {
+        mainAlterLocation.remove(uuid);
     }
 
-    public void setMain_alter_Location(UUID uuid, Location mainAlterLocation) {
-        main_alter_Location.put(uuid, mainAlterLocation);
-    }
-
-    public HashMap<UUID, List<Location>> getSub_alter_Location() {
-        return sub_alter_Location;
-    }
-
-    public Boolean addSub_alter_Location(UUID uuid, Location subAlterLocation) {
-
-        if (!sub_alter_Location.containsKey(uuid)) {
-            ArrayList<Location> locations = new ArrayList<>();
-            locations.add(subAlterLocation);
-            sub_alter_Location.put(uuid, locations);
-            return false;
-        }
-
-        List<Location> locations = sub_alter_Location.get(uuid);
-
-        if (!locations.contains(subAlterLocation)) {
-            locations.add(subAlterLocation);
-            sub_alter_Location.put(uuid, locations);
-            return false;
-        }
-
-        return true;
-
-    }
-
-    public void clearMain_alter_Location() {
-        main_alter_Location.clear();
-    }
-
-    public void clearSub_alter_Location() {
-        sub_alter_Location.clear();
+    public void clearSubAlterLocations(UUID uuid) {
+        subAlterLocations.remove(uuid);
     }
 
     public void clearPlayerAlterStatus(UUID uuid) {

@@ -21,3 +21,8 @@ sub_alter:
 
   pointer_confirm_error: "&c请先开启子祭坛选择！"
   pointer_confirm_succeed: "&a子祭坛位置确认成功！"
+
+all_alter:
+  main_alter_output_error: "&c错误，未设置任何主祭坛坐标！"
+  sub_alter_output_error: "&c错误，未设置任何子祭坛坐标！"
+  all_alter_output_succeed: "&a主祭坛以及子祭坛相对坐标输出成功！"

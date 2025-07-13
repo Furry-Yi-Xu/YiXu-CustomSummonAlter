@@ -2,10 +2,18 @@ package com.yixu.Command.SubCommand;
 
 import com.yixu.Alter.AlterSession;
 import com.yixu.CustomSummonAlter;
+import com.yixu.Util.File.ExportLocationToFile;
 import com.yixu.Util.Permission.PermissionCheck;
 import com.yixu.Util.Permission.PermissionNodes;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.util.Vector;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.UUID;
 
 public class SubCommand {
 
@@ -29,7 +37,7 @@ public class SubCommand {
 
         Player player = getPlayer();
 
-        alterSession.clearMain_alter_Location();
+        alterSession.clearMainAlterLocations(player.getUniqueId());
         alterSession.setPlayerAlterStatus(player.getUniqueId(), "main_alter_setting");
     }
 
@@ -41,7 +49,7 @@ public class SubCommand {
 
         Player player = getPlayer();
 
-        alterSession.clearSub_alter_Location();
+        alterSession.clearSubAlterLocations(player.getUniqueId());
         alterSession.setPlayerAlterStatus(player.getUniqueId(), "sub_alter_setting");
     }
 
@@ -66,4 +74,18 @@ public class SubCommand {
 
         alterSession.setPlayerAlterStatus(player.getUniqueId(), "sub_alter_confirm");
     }
+
+    public void runAll_AlterConfirm() throws IOException {
+
+        if (!PermissionCheck.checkPlayerWithPermission(sender, PermissionNodes.ALL_ALTER_CONFIRM)) {
+            return;
+        }
+
+        Player player = getPlayer();
+
+        ExportLocationToFile exportLocationToFile = new ExportLocationToFile();
+        exportLocationToFile.exportAlterLocationsToFile(player);
+
+    }
+
 }
