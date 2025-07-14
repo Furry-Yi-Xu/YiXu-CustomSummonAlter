@@ -10,8 +10,6 @@ commands:
 
 permissions:
   yixu-customsummonalter.reload:
-    description: 重载自定义祭坛系统配置文件
     default: op
   yixu-customsummonalter.main_alter.setting:
-    description: 设置主祭坛位置
     default: op

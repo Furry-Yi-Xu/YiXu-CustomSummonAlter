@@ -1,10 +1,9 @@
 package com.yixu.Command.MainCommand;
 
-import com.yixu.Alter.AlterSession;
+import com.yixu.Alter.AlterSessionManager;
 import com.yixu.Command.SubCommand.SubCommand;
 import com.yixu.CustomSummonAlter;
 import com.yixu.Util.Message.MessageUtil;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -69,13 +68,13 @@ public class MainCommand implements CommandExecutor {
             return true;
         }
 
-        AlterSession alterSession = CustomSummonAlter.getAlterSession();
+        AlterSessionManager alterSessionManager = CustomSummonAlter.getAlterSession();
 
         if (subCommand1.equals("main") && subCommand2.equals("confirm")) {
 
             if (
-                    alterSession.getPlayerAlterStatus(player.getUniqueId()) == null ||
-                            !alterSession.getPlayerAlterStatus(player.getUniqueId()).equals("main_alter_setting")
+                    alterSessionManager.getPlayerAlterStatus(player.getUniqueId()) == null ||
+                            !alterSessionManager.getPlayerAlterStatus(player.getUniqueId()).equals("main_alter_setting")
             ) {
                 MessageUtil.sendMessage(sender, "main_alter.pointer_confirm_error");
                 return true;
@@ -89,8 +88,8 @@ public class MainCommand implements CommandExecutor {
         if (subCommand1.equals("sub") && subCommand2.equals("confirm")) {
 
             if (
-                    alterSession.getPlayerAlterStatus(player.getUniqueId()) == null ||
-                            !alterSession.getPlayerAlterStatus(player.getUniqueId()).equals("sub_alter_setting")
+                    alterSessionManager.getPlayerAlterStatus(player.getUniqueId()) == null ||
+                            !alterSessionManager.getPlayerAlterStatus(player.getUniqueId()).equals("sub_alter_setting")
             ) {
                 MessageUtil.sendMessage(sender, "sub_alter.pointer_confirm_error");
                 return true;
@@ -103,12 +102,12 @@ public class MainCommand implements CommandExecutor {
 
         if (subCommand1.equals("all") && subCommand2.equals("confirm")) {
 
-            if (alterSession.getMainAlterLocation(player.getUniqueId()) == null) {
+            if (alterSessionManager.getMainAlterLocation(player.getUniqueId()) == null) {
                 MessageUtil.sendMessage(player, "all_alter.main_alter_output_error");
                 return true;
             }
 
-            if (alterSession.getSubAlterLocations(player.getUniqueId()) == null) {
+            if (alterSessionManager.getSubAlterLocations(player.getUniqueId()) == null) {
                 MessageUtil.sendMessage(player, "all_alter.sub_alter_output_error");
                 return true;
             }

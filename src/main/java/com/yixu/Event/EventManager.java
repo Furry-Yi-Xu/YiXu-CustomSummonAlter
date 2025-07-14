@@ -1,6 +1,7 @@
 package com.yixu.Event;
 
-import com.yixu.Event.Vanilla.CustomBlockInteractEvent;
+import com.yixu.Event.CraftEngine.CustomBlockInteractEvent;
+import com.yixu.Event.Vanilla.PlayerInteractEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 
@@ -10,7 +11,11 @@ public class EventManager {
 
         PluginManager pluginManager = plugin.getServer().getPluginManager();
 
-        pluginManager.registerEvents(new CustomBlockInteractEvent(), plugin);
+        if (pluginManager.getPlugin("CraftEngine") != null) {
+            pluginManager.registerEvents(new CustomBlockInteractEvent(), plugin);
+        }
+
+        pluginManager.registerEvents(new PlayerInteractEvent(), plugin);
 
     }
 

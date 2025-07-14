@@ -4,7 +4,7 @@ import org.bukkit.Location;
 
 import java.util.*;
 
-public class AlterSession {
+public class AlterSessionManager {
 
     private final Map<UUID, String> playerAlterStatus = new HashMap<>();
     private final Map<UUID, Location> mainAlterLocation = new HashMap<>();

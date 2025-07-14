@@ -1,6 +1,6 @@
 package com.yixu.Util.File;
 
-import com.yixu.Alter.AlterSession;
+import com.yixu.Alter.AlterSessionManager;
 import com.yixu.CustomSummonAlter;
 import com.yixu.Util.Message.MessageUtil;
 import org.bukkit.Location;
@@ -17,10 +17,10 @@ public class ExportLocationToFile {
 
     public void exportAlterLocationsToFile(Player player) throws IOException {
 
-        AlterSession alterSession = CustomSummonAlter.getAlterSession();
+        AlterSessionManager alterSessionManager = CustomSummonAlter.getAlterSession();
 
-        Location mainAlterLocation = alterSession.getMainAlterLocation(player.getUniqueId());
-        List<Location> subAlterLocations = alterSession.getSubAlterLocations(player.getUniqueId());
+        Location mainAlterLocation = alterSessionManager.getMainAlterLocation(player.getUniqueId());
+        List<Location> subAlterLocations = alterSessionManager.getSubAlterLocations(player.getUniqueId());
 
         File filePath = new File("plugins/" + CustomSummonAlter.getInstance().getName() + "/Alter_Locations.txt");
 

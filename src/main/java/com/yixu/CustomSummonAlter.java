@@ -1,6 +1,6 @@
 package com.yixu;
 
-import com.yixu.Alter.AlterSession;
+import com.yixu.Alter.AlterSessionManager;
 import com.yixu.Command.CommandManager;
 import com.yixu.Command.MainCommand.MainTabCompleter;
 import com.yixu.Config.ConfigManager;
@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 public final class CustomSummonAlter extends JavaPlugin {
 
     private static CustomSummonAlter instance;
-    private static AlterSession alterSession = new AlterSession();
+    private static AlterSessionManager alterSessionManager = new AlterSessionManager();
 
     public CustomSummonAlter() {
         super();
@@ -23,7 +23,7 @@ public final class CustomSummonAlter extends JavaPlugin {
 
         instance = this;
 
-        AlterSession alterSession = new AlterSession();
+        AlterSessionManager alterSessionManager = new AlterSessionManager();
 
         try {
             ConfigManager.init(this);
@@ -51,7 +51,7 @@ public final class CustomSummonAlter extends JavaPlugin {
         return instance;
     }
 
-    public static AlterSession getAlterSession() {
-        return alterSession;
+    public static AlterSessionManager getAlterSession() {
+        return alterSessionManager;
     }
 }

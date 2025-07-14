@@ -1,28 +1,23 @@
 package com.yixu.Command.SubCommand;
 
-import com.yixu.Alter.AlterSession;
+import com.yixu.Alter.AlterSessionManager;
 import com.yixu.CustomSummonAlter;
 import com.yixu.Util.File.ExportLocationToFile;
 import com.yixu.Util.Permission.PermissionCheck;
 import com.yixu.Util.Permission.PermissionNodes;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.util.Vector;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.UUID;
 
 public class SubCommand {
 
     private final CommandSender sender;
-    private final AlterSession alterSession;
+    private final AlterSessionManager alterSessionManager;
 
     public SubCommand(CommandSender sender) {
         this.sender = sender;
-        this.alterSession = CustomSummonAlter.getAlterSession();
+        this.alterSessionManager = CustomSummonAlter.getAlterSession();
     }
 
     private Player getPlayer() {
@@ -37,8 +32,8 @@ public class SubCommand {
 
         Player player = getPlayer();
 
-        alterSession.clearMainAlterLocations(player.getUniqueId());
-        alterSession.setPlayerAlterStatus(player.getUniqueId(), "main_alter_setting");
+        alterSessionManager.clearMainAlterLocations(player.getUniqueId());
+        alterSessionManager.setPlayerAlterStatus(player.getUniqueId(), "main_alter_setting");
     }
 
     public void runSub_AlterSetting() {
@@ -49,8 +44,8 @@ public class SubCommand {
 
         Player player = getPlayer();
 
-        alterSession.clearSubAlterLocations(player.getUniqueId());
-        alterSession.setPlayerAlterStatus(player.getUniqueId(), "sub_alter_setting");
+        alterSessionManager.clearSubAlterLocations(player.getUniqueId());
+        alterSessionManager.setPlayerAlterStatus(player.getUniqueId(), "sub_alter_setting");
     }
 
     public void runMain_AlterConfirm() {
@@ -61,7 +56,7 @@ public class SubCommand {
 
         Player player = getPlayer();
 
-        alterSession.setPlayerAlterStatus(player.getUniqueId(), "main_alter_confirm");
+        alterSessionManager.setPlayerAlterStatus(player.getUniqueId(), "main_alter_confirm");
     }
 
     public void runSub_AlterConfirm() {
@@ -72,7 +67,7 @@ public class SubCommand {
 
         Player player = getPlayer();
 
-        alterSession.setPlayerAlterStatus(player.getUniqueId(), "sub_alter_confirm");
+        alterSessionManager.setPlayerAlterStatus(player.getUniqueId(), "sub_alter_confirm");
     }
 
     public void runAll_AlterConfirm() throws IOException {
